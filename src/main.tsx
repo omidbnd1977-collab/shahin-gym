@@ -156,6 +156,10 @@ function App() {
         <img src={`${import.meta.env.BASE_URL}gymx-header.png`} alt="هدر تصویری باشگاه بدنسازی شاهین" />
       </section>
 
+      <div className="gymx-marquee" aria-label="شعار باشگاه">
+        <div className="gymx-marquee-track"><span>قدرتت را آزاد کن</span><b>✳</b><span>فراتر از محدودیت</span><b>✳</b><span>هر روز قوی‌تر</span><b>✳</b><span>قدرتت را آزاد کن</span><b>✳</b><span>فراتر از محدودیت</span><b>✳</b></div>
+      </div>
+
       <section className="manifesto" id="about"><div className="section-wrap two-col"><div><p className="eyebrow dark">استاندارد شاهین</p><h2>برای<br /><em>بی‌رقم‌ها.</em></h2></div><div className="manifesto-copy"><p className="lead">اینجا فقط یک باشگاه نیست؛ میدان اثبات آدم‌هایی است که نمی‌خواهند مثل قبل بمانند.</p><p>باشگاه بدنسازی شاهین، تمرین حرفه‌ای، جامعه‌ای قدرتمند و استانداردی بی‌رقیب را زیر یک سقف جمع کرده است. هر تکرار هدفی دارد و هر جلسه شما را یک قدم جلوتر می‌برد.</p><a className="text-link" href="#programs" onClick={(e) => { e.preventDefault(); scrollTo('programs'); }}>فلسفه ما <Icon name="arrow" size={16} /></a></div></div><div className="stats section-wrap"><div><strong>۱۲</strong><span>سال<br />تجربه</span></div><div><strong>۴.۹</strong><span>امتیاز<br />اعضا</span></div><div><strong>۲.۴k</strong><span>زندگی<br />متفاوت</span></div><div><strong>۲۴/۷</strong><span>دسترسی<br />اعضا</span></div></div></section>
 
       <section className="programs section-wrap" id="programs"><div className="section-heading"><div><p className="eyebrow dark">خدمات ما</p><h2>با <em>هدف</em> تمرین کنید.</h2></div><p>برنامه‌هایی طراحی‌شده برای رسیدن به نقطه‌ای که هستید و عبور از چیزی که فکر می‌کردید ممکن است.</p></div><div className="program-grid">{programs.map((p) => <article className="program-card" key={p.number}><div className="program-number">{p.number}</div><div><p className="card-tag">{p.tag}</p><h3>{p.title}</h3><p>{p.detail}</p><a className="round-arrow" href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}><Icon name="arrow" size={18} /></a></div></article>)}</div></section>
