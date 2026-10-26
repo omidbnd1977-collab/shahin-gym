@@ -96,6 +96,30 @@ function App() {
     return () => window.removeEventListener('mousemove', move);
   }, []);
 
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(
+      'main > section:not(.eagle-stage):not(.reference-header)'
+    ));
+    sections.forEach((section) => section.classList.add('scroll-reveal'));
+    const items = Array.from(document.querySelectorAll<HTMLElement>(
+      '.program-card, .coach-card, .facility-tile, .plan-card, .stats > div, .contact-grid > *'
+    ));
+    items.forEach((item, index) => {
+      item.classList.add('scroll-reveal-item');
+      item.style.setProperty('--reveal-delay', `${(index % 4) * 90}ms`);
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -45px 0px' });
+    [...sections, ...items].forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   const scrollTo = (id: string) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
 
   return <div className="site-shell">
