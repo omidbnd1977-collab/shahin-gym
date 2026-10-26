@@ -64,10 +64,10 @@ function App() {
       const startY = hero.getBoundingClientRect().top + window.scrollY;
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
-      if (video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0) {
+      if (video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
         const target = Math.min(video.duration - 0.04, Math.max(0, progress * video.duration));
-        if (Math.abs(video.currentTime - target) > 0.04) {
-          video.pause();
+        // Avoid stacking seek requests while the browser is still decoding a frame.
+        if (!video.seeking && Math.abs(video.currentTime - target) > 0.08) {
           video.currentTime = target;
         }
       }
@@ -118,7 +118,7 @@ function App() {
             <p className="hero-sub">قدرت. انضباط.<br />تحول.</p>
             <div className="hero-actions"><button className="button button-primary" onClick={() => scrollTo('contact')}>عضویت در باشگاه <Icon name="arrow" size={18} /></button><button className="button button-ghost" onClick={() => scrollTo('programs')}><span className="play-icon"><Icon name="play" size={12} /></span> برنامه‌های ما</button></div>
           </div>
-          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}shaheen-flight.mp4`} muted playsInline preload="metadata" /></div>
+          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}shaheen-flight.mp4`} muted playsInline preload="auto" /></div>
           <div className="perched-eagle" style={{ transform: `translate3d(${mouse.x * 7}px, ${mouse.y * 4}px, 0)` }} aria-hidden="true" />
           <div className="hero-meta"><span>برای ورود اسکرول کنید</span><span className="scroll-line"><i /></span><span>۰۱ / ۰۶</span></div>
           {showFlightHint && <div className="flight-note"><span className="pulse-dot" /> شاهین را بیدار کنید</div>}
