@@ -67,3 +67,56 @@ a { color: inherit; text-decoration: none; }
 .footer { background: var(--ink); color: white; padding: 47px 0 24px; }.footer-top { display: flex; align-items: flex-start; justify-content: space-between; padding-bottom: 70px; }.footer-top > p { margin: 0 auto 0 24%; color: #74736d; font: 500 15px/1.2 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .08em; }.socials { display: flex; gap: 10px; }.socials a { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #43443d; color: #aaa89f; }.socials a:hover { color: var(--acid); border-color: var(--acid); }.footer-bottom { padding-top: 18px; border-top: 1px solid #282923; display: flex; justify-content: space-between; color: #64645f; font-size: 8px; letter-spacing: .17em; }
 @media (max-width: 850px) { .section-wrap { width: min(100% - 42px, 600px); }.nav { padding: 22px 21px; }.desktop-links, .nav-cta { display: none; }.menu-toggle { display: grid; place-items: center; color: white; background: transparent; border: 0; cursor: pointer; }.mobile-links { position: absolute; top: 72px; left: 21px; right: 21px; display: grid; padding: 16px 20px; background: rgba(20,20,18,.96); border: 1px solid #34342e; gap: 18px; font: 600 12px 'Manrope', sans-serif; text-transform: uppercase; letter-spacing: .16em; }.eagle-stage { height: 300vh; }.eagle-sticky { min-height: 600px; }.eagle-copy { left: 21px; right: 21px; top: 46%; width: auto; }.eagle-copy h1 { font-size: clamp(48px, 14vw, 82px); }.perched-eagle { left: 41%; top: 46%; transform: scale(.72); opacity: .86; }.hero-vignette { background: linear-gradient(0deg, rgba(5,5,5,.86) 0%, rgba(5,5,5,.3) 58%, rgba(5,5,5,.52) 100%); }.hero-meta { right: 21px; bottom: 23px; }.hero-corner { display: none; }.flight-note { bottom: 24px; }.hero-sub { margin-top: 22px; }.manifesto, .programs, .coaches, .facilities, .membership, .testimonial, .contact { padding: 90px 0; }.two-col, .section-heading, .facilities-head, .contact-grid { grid-template-columns: 1fr; gap: 35px; }.manifesto-copy { padding: 0; }.stats { margin-top: 80px; grid-template-columns: repeat(2, 1fr); row-gap: 28px; }.program-grid { grid-template-columns: 1fr; }.program-card { min-height: 245px; }.coach-grid { grid-template-columns: 1fr; gap: 40px; }.coach-photo { height: 400px; }.facility-gallery { min-height: 600px; grid-template-columns: 1fr 1fr; }.tile-large { grid-row: 1 / 3; }.plan-grid { grid-template-columns: 1fr; gap: 18px; }.plan-card.featured { transform: none; }.testimonial { padding-left: 20px; padding-right: 20px; }.contact-details { grid-template-columns: 1fr; gap: 16px; }.footer-top { display: grid; gap: 30px; }.footer-top > p { margin: 0; }.footer-bottom { gap: 15px; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } .eagle-stage { height: 300vh; }.flight-video { display: block; } }
+
+
+/* Keyvo-inspired editorial scroll reveals, adapted to Shahin's visual identity. */
+.scroll-reveal,
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition: opacity 850ms cubic-bezier(.2,.7,.2,1), transform 850ms cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.scroll-reveal.is-visible,
+.scroll-reveal-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.scroll-reveal-item { transition-delay: var(--reveal-delay, 0ms); }
+.program-card, .coach-card, .facility-tile, .plan-card {
+  transition-property: opacity, transform, background-color, border-color, box-shadow;
+}
+.program-card:hover, .coach-card:hover, .facility-tile:hover, .plan-card:hover {
+  transform: translate3d(0, -5px, 0);
+}
+.section-heading, .facilities-head, .two-col {
+  position: relative;
+}
+.section-heading::after, .facilities-head::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -24px;
+  right: 0;
+  width: clamp(48px, 8vw, 100px);
+  height: 2px;
+  background: var(--acid);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 900ms cubic-bezier(.2,.7,.2,1) 180ms;
+}
+.section-heading.is-visible::after, .facilities-head.is-visible::after {
+  transform: scaleX(1);
+}
+.reference-header img { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.reference-header:hover img { transform: scale(1.015); }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal, .scroll-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+  .section-heading::after, .facilities-head::after { transition: none; transform: scaleX(1); }
+  .reference-header img { transition: none; }
+}
