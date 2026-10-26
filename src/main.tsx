@@ -65,7 +65,9 @@ function App() {
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
       if (video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
-        const target = Math.min(video.duration - 0.04, Math.max(0, progress * video.duration));
+        // Let the flight unfold over the full scroll distance, using only the middle 72% of the clip for a calmer, slower feel.
+        const flightProgress = Math.min(1, Math.max(0, (progress - 0.14) / 0.72));
+        const target = Math.min(video.duration - 0.04, Math.max(0, flightProgress * video.duration));
         // Avoid stacking seek requests while the browser is still decoding a frame.
         if (!video.seeking && Math.abs(video.currentTime - target) > 0.08) {
           video.currentTime = target;
