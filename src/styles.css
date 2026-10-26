@@ -120,3 +120,68 @@ a { color: inherit; text-decoration: none; }
   .section-heading::after, .facilities-head::after { transition: none; transform: scaleX(1); }
   .reference-header img { transition: none; }
 }
+
+
+/* Persian GYM X-inspired visual direction: charcoal, warm white and athletic red. */
+:root {
+  --ink: #060302;
+  --paper: #fafaf9;
+  --muted: #9e8b7b;
+  --line: rgba(20, 12, 10, .16);
+  --acid: #de1702;
+  --silver: #b2aba0;
+}
+body { background: var(--paper); color: #171412; }
+.eagle-stage { background: #060302; }
+.eagle-sticky { background: radial-gradient(ellipse at 67% 42%, #34100c 0%, #160a08 32%, #060302 72%); }
+.hero-vignette { background: linear-gradient(90deg, rgba(5,3,2,.94) 0%, rgba(5,3,2,.62) 38%, rgba(5,3,2,.08) 75%), linear-gradient(0deg, rgba(5,3,2,.68) 0%, transparent 34%, rgba(5,3,2,.24) 100%); }
+.brand-mark { border-color: var(--acid); color: var(--acid); }
+.button-primary { background: var(--acid); color: #fff; }
+.button-primary:hover { background: #b91405; }
+.dark-section { background: #100907; }
+.manifesto, .programs, .facilities, .testimonial { background: var(--paper); }
+.program-card { background: var(--paper); }
+.program-card:hover { background: #f0eae6; }
+.coach-photo { background: radial-gradient(circle at 50% 26%, #6c4138, #28201d 47%, #0c0807 78%); }
+.coach-2 { background: radial-gradient(circle at 50% 28%, #6a3530, #211311 48%, #0c0807 77%); }
+.coach-3 { background: radial-gradient(circle at 50% 25%, #806358, #2d1c18 48%, #0c0807 78%); }
+.coach-photo::before { background: linear-gradient(135deg, rgba(222,23,2,.76), transparent 55%); }
+.coach-2::before { background: linear-gradient(135deg, rgba(222,23,2,.35), transparent 58%); }
+.popular { background: var(--acid); color: white; }
+.round-arrow:hover { background: var(--acid); color: #fff; border-color: var(--acid); }
+.text-link { border-color: #b9a79d; }
+.gymx-marquee {
+  overflow: hidden;
+  background: var(--acid);
+  color: #fff;
+  padding: 17px 0 19px;
+  white-space: nowrap;
+  direction: ltr;
+}
+.gymx-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  animation: gymxMarquee 28s linear infinite;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: clamp(17px, 2.2vw, 28px);
+  font-weight: 900;
+}
+.gymx-marquee-track b { font-size: 24px; color: #260905; }
+@keyframes gymxMarquee { to { transform: translateX(-50%); } }
+.plan-card { border-color: rgba(222,23,2,.22); }
+.plan-card.featured { border-color: var(--acid); }
+.inquiry-form { background: #f0eae6; }
+.footer { background: #060302; }
+@media (hover: hover) {
+  .program-card, .coach-card, .facility-tile, .plan-card { transition-duration: 450ms; }
+  .coach-card:hover .coach-photo { filter: saturate(1.12); }
+}
+@media (max-width: 640px) {
+  .gymx-marquee { padding: 13px 0 15px; }
+  .gymx-marquee-track { animation-duration: 22s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gymx-marquee-track { animation: none; }
+}
