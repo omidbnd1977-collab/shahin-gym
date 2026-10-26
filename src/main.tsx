@@ -49,6 +49,7 @@ function App() {
     video.pause();
     video.currentTime = 0;
     const onMetadata = () => setVideoReady(true);
+    if (video.readyState >= 1) setVideoReady(true);
     video.addEventListener('loadedmetadata', onMetadata);
     return () => video.removeEventListener('loadedmetadata', onMetadata);
   }, []);
@@ -57,8 +58,6 @@ function App() {
     const hero = heroRef.current;
     const video = videoRef.current;
     if (!hero || !video) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
     let raf = 0;
     let lastProgress = -1;
     let lastTime = -1;
