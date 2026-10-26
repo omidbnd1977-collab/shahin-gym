@@ -59,35 +59,34 @@ function App() {
     const video = videoRef.current;
     if (!hero || !video) return;
     let raf = 0;
-    let lastProgress = -1;
-    let lastTime = -1;
-    const scrub = () => {
+    const sync = () => {
       raf = 0;
-      const rect = hero.getBoundingClientRect();
+      const startY = hero.getBoundingClientRect().top + window.scrollY;
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
       if (video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0) {
-        const nextTime = progress * video.duration;
-        // Avoid repeated seeks to nearly identical frames: this prevents decode flicker.
-        if (Math.abs(progress - lastProgress) > 0.0015 && Math.abs(nextTime - lastTime) > 0.025) {
+        const target = Math.min(video.duration - 0.04, Math.max(0, progress * video.duration));
+        if (Math.abs(video.currentTime - target) > 0.04) {
           video.pause();
-          video.currentTime = nextTime;
-          lastProgress = progress;
-          lastTime = nextTime;
+          video.currentTime = target;
         }
       }
       setShowFlightHint(progress < 0.08);
     };
-    const onScroll = () => { if (!raf) raf = requestAnimationFrame(scrub); };
-    scrub();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(sync); };
+    video.addEventListener('loadedmetadata', schedule);
+    video.addEventListener('loadeddata', schedule);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    schedule();
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      video.removeEventListener('loadedmetadata', schedule);
+      video.removeEventListener('loadeddata', schedule);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [videoReady]);
+  }, []);
 
   useEffect(() => {
     const move = (event: MouseEvent) => setMouse({ x: (event.clientX / window.innerWidth - .5) * 2, y: (event.clientY / window.innerHeight - .5) * 2 });
