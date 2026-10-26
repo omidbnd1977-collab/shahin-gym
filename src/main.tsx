@@ -120,8 +120,8 @@ function App() {
             <p className="hero-sub">قدرت. انضباط.<br />تحول.</p>
             <div className="hero-actions"><button className="button button-primary" onClick={() => scrollTo('contact')}>عضویت در باشگاه <Icon name="arrow" size={18} /></button><button className="button button-ghost" onClick={() => scrollTo('programs')}><span className="play-icon"><Icon name="play" size={12} /></span> برنامه‌های ما</button></div>
           </div>
-          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}assets/shaheen-flight.mp4`} muted playsInline preload="metadata" /></div>
-          <div className="perched-eagle" style={{ transform: `translate3d(${mouse.x * 7}px, ${mouse.y * 4}px, 0)` }} aria-hidden="true"><div className="eagle-silhouette"><div className="wing wing-left" /><div className="wing wing-right" /><div className="eagle-body" /><div className="eagle-head" /><div className="eagle-beak" /><div className="rock" /></div></div>
+          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}shaheen-flight.mp4`} muted playsInline preload="metadata" /></div>
+          <div className="perched-eagle" style={{ transform: `translate3d(${mouse.x * 7}px, ${mouse.y * 4}px, 0)` }} aria-hidden="true" />
           <div className="hero-meta"><span>برای ورود اسکرول کنید</span><span className="scroll-line"><i /></span><span>۰۱ / ۰۶</span></div>
           {showFlightHint && <div className="flight-note"><span className="pulse-dot" /> شاهین را بیدار کنید</div>}
           <div className="hero-corner hero-corner-left">شاهین / ۰۰۱</div><div className="hero-corner hero-corner-right">بدون بهانه</div>
@@ -129,7 +129,7 @@ function App() {
       </section>
 
       <section className="reference-header" aria-label="هدر تصویری باشگاه شاهین">
-        <img src={`${import.meta.env.BASE_URL}assets/gymx-header.png`} alt="هدر تصویری باشگاه بدنسازی شاهین" />
+        <img src={`${import.meta.env.BASE_URL}gymx-header.png`} alt="هدر تصویری باشگاه بدنسازی شاهین" />
       </section>
 
       <section className="manifesto" id="about"><div className="section-wrap two-col"><div><p className="eyebrow dark">استاندارد شاهین</p><h2>برای<br /><em>بی‌رقم‌ها.</em></h2></div><div className="manifesto-copy"><p className="lead">اینجا فقط یک باشگاه نیست؛ میدان اثبات آدم‌هایی است که نمی‌خواهند مثل قبل بمانند.</p><p>باشگاه بدنسازی شاهین، تمرین حرفه‌ای، جامعه‌ای قدرتمند و استانداردی بی‌رقیب را زیر یک سقف جمع کرده است. هر تکرار هدفی دارد و هر جلسه شما را یک قدم جلوتر می‌برد.</p><a className="text-link" href="#programs" onClick={(e) => { e.preventDefault(); scrollTo('programs'); }}>فلسفه ما <Icon name="arrow" size={16} /></a></div></div><div className="stats section-wrap"><div><strong>۱۲</strong><span>سال<br />تجربه</span></div><div><strong>۴.۹</strong><span>امتیاز<br />اعضا</span></div><div><strong>۲.۴k</strong><span>زندگی<br />متفاوت</span></div><div><strong>۲۴/۷</strong><span>دسترسی<br />اعضا</span></div></div></section>
