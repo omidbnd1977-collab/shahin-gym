@@ -388,6 +388,7 @@ body { font-family: 'Noto Sans Arabic', 'Manrope', sans-serif; }
   .section-wrap { width: min(100% - 42px, 650px); }
   .nav { padding: 14px 21px; }
   .mobile-links { top: 68px; }
+  .mobile-links button { display: flex; align-items: center; gap: 8px; padding: 8px 0; border: 0; background: transparent; color: #fff; text-align: right; font: 600 12px 'Noto Sans Arabic', sans-serif; cursor: pointer; }
   .reference-header { padding: 14px 12px 0; }
   .reference-header img { width: 100%; aspect-ratio: 752 / 600; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 24px; padding-block: 48px 40px; }

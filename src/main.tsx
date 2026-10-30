@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import TrainerDashboard from './TrainerDashboard';
+import MemberPortal from './MemberPortal';
 import './styles.css';
 
 type IconName = 'arrow' | 'play' | 'menu' | 'close' | 'instagram' | 'facebook' | 'check' | 'quote';
@@ -44,6 +45,8 @@ function App() {
   const [showFlightHint, setShowFlightHint] = useState(true);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [trainerDashboardOpen, setTrainerDashboardOpen] = useState(false);
+  const [memberPortalOpen, setMemberPortalOpen] = useState(false);
+  const [accessChoiceOpen, setAccessChoiceOpen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -125,6 +128,7 @@ function App() {
   const scrollTo = (id: string) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
 
   if (trainerDashboardOpen) return <TrainerDashboard onExit={() => setTrainerDashboardOpen(false)} />;
+  if (memberPortalOpen) return <MemberPortal onExit={() => setMemberPortalOpen(false)} />;
 
   return <div className="site-shell">
     <header className={`nav ${menuOpen ? 'nav-open' : ''}`}>
@@ -132,9 +136,9 @@ function App() {
       <nav className="desktop-links" aria-label="ناوبری اصلی">
         {[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}
       </nav>
-      <button className="nav-cta" onClick={() => { setMenuOpen(false); setTrainerDashboardOpen(true); }}>پنل مربی <Icon name="arrow" size={16} /></button>
+      <button className="nav-cta" onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button>
       <button className="menu-toggle" aria-label={menuOpen ? 'بستن منو' : 'باز کردن منو'} onClick={() => setMenuOpen(!menuOpen)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
-      {menuOpen && <nav className="mobile-links">{[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}<button onClick={() => { setMenuOpen(false); setTrainerDashboardOpen(true); }}>پنل مربی <Icon name="arrow" size={16} /></button></nav>}
+      {menuOpen && <nav className="mobile-links">{[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}<button onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button></nav>}
     </header>
 
     <main id="top">
@@ -187,6 +191,7 @@ function App() {
       </div>
       <div className="section-wrap footer-bottom"><span>© ۱۴۰۵ باشگاه بدنسازی شاهین. تمام حقوق محفوظ است.</span><a href="#top" onClick={(e) => { e.preventDefault(); scrollTo('top'); }}>ساخته‌شده برای قوی‌تر شدن</a></div>
     </footer>
+    {accessChoiceOpen && <div className="access-choice-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setAccessChoiceOpen(false); }}><section className="access-choice" role="dialog" aria-modal="true" aria-labelledby="access-choice-title"><button className="access-choice-close" aria-label="بستن" onClick={() => setAccessChoiceOpen(false)}><Icon name="close" /></button><p className="eyebrow dark">باشگاه شاهین</p><h2 id="access-choice-title">ورود به پنل</h2><p className="access-choice-description">نوع حساب خود را انتخاب کنید.</p><div className="access-choice-options"><button onClick={() => { setAccessChoiceOpen(false); setTrainerDashboardOpen(true); }}><span className="access-choice-icon"><Icon name="quote" /></span><span><b>ورود مربی</b><small>مدیریت اعضا، تمرین و تغذیه</small></span><Icon name="arrow" size={16} /></button><button onClick={() => { setAccessChoiceOpen(false); setMemberPortalOpen(true); }}><span className="access-choice-icon"><Icon name="check" /></span><span><b>ورود عضو</b><small>مشاهدهٔ برنامهٔ تمرین و تغذیهٔ شخصی</small></span><Icon name="arrow" size={16} /></button></div><div className="access-choice-note">اعضا برای ورود به شمارهٔ ثبت‌شده و کد دسترسی نیاز دارند.</div></section></div>}
   </div>;
 }
 
