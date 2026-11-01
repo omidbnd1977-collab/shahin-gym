@@ -161,7 +161,7 @@ function App() {
       </section>
 
       <section className="reference-header" aria-label="هدر تصویری باشگاه شاهین">
-        <img src={`${import.meta.env.BASE_URL}assets/gymx-banner.png`} alt="تمرین قدرتی بانوان و آقایان در باشگاه شاهین" />
+        <img src={`${import.meta.env.BASE_URL}gymx-header-final.png?user=20261101`} alt="تمرین قدرتی بانوان و آقایان در باشگاه شاهین" />
       </section>
 
       <div className="gymx-marquee" aria-label="رشته‌های تمرینی باشگاه">

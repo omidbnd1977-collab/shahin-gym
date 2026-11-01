@@ -240,6 +240,9 @@ body { font-family: 'Noto Sans Arabic', 'Manrope', sans-serif; }
   opacity: 1;
   transition: background .2s ease, transform .2s ease;
 }
+.nav-actions { display: flex; align-items: center; gap: 12px; direction: rtl; }
+.nav-member-link { padding: 8px 4px; border: 0; background: transparent; color: #e8eee8; font-family: 'Noto Sans Arabic', sans-serif; font-size: 11px; cursor: pointer; transition: color .2s ease; }
+.nav-member-link:hover { color: #86efac; }
 .nav-cta:hover { color: #fff; background: #14532d; transform: translateY(-2px); }
 .eagle-sticky { background: radial-gradient(ellipse at 68% 42%, #202326 0%, #111315 34%, #070809 72%); }
 .hero-vignette { background: linear-gradient(90deg, rgba(5,6,7,.94) 0%, rgba(5,6,7,.62) 38%, rgba(5,6,7,.08) 75%), linear-gradient(0deg, rgba(5,6,7,.72) 0%, transparent 36%, rgba(5,6,7,.3) 100%); }
