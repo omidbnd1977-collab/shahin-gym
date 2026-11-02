@@ -1,8 +1,8 @@
-// The Lovable TanStack preset supplies TanStack Start, React, Tailwind, path aliases,
-// and the Nitro Cloudflare build target used by this project.
+// Configure the Lovable TanStack Start preset for Render's Node runtime.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  nitro: { preset: "render-com" },
   tanstackStart: {
     server: { entry: "server" },
   },
