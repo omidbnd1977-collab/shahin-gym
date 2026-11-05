@@ -136,9 +136,13 @@ function App() {
       <nav className="desktop-links" aria-label="ناوبری اصلی">
         {[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}
       </nav>
-      <button className="nav-cta" onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button>
+      <div className="nav-actions">
+        <button className="nav-member-link" onClick={() => { setMenuOpen(false); setTrainerDashboardOpen(true); }}>پنل مربی</button>
+        <button className="nav-member-link" onClick={() => { setMenuOpen(false); setMemberPortalOpen(true); }}>پنل اعضا</button>
+        <button className="nav-cta" onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button>
+      </div>
       <button className="menu-toggle" aria-label={menuOpen ? 'بستن منو' : 'باز کردن منو'} onClick={() => setMenuOpen(!menuOpen)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
-      {menuOpen && <nav className="mobile-links">{[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}<button onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button></nav>}
+      {menuOpen && <nav className="mobile-links">{[['درباره ما', 'about'], ['برنامه‌ها', 'programs'], ['مربیان', 'coaches'], ['عضویت', 'membership'], ['تماس با ما', 'contact']].map(([label, id]) => <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>)}<button className="nav-member-link" onClick={() => { setMenuOpen(false); setTrainerDashboardOpen(true); }}>پنل مربی</button><button className="nav-member-link" onClick={() => { setMenuOpen(false); setMemberPortalOpen(true); }}>پنل اعضا</button><button onClick={() => { setMenuOpen(false); setAccessChoiceOpen(true); }}>ورود به پنل <Icon name="arrow" size={16} /></button></nav>}
     </header>
 
     <main id="top">
