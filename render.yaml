@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: shahin-gym
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
