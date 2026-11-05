@@ -60,6 +60,21 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const mobileViewport = window.matchMedia('(max-width: 850px)');
+    const updatePreload = () => {
+      const preload = mobileViewport.matches ? 'auto' : 'metadata';
+      if (video.preload === preload) return;
+      video.preload = preload;
+      if (mobileViewport.matches) video.load();
+    };
+    updatePreload();
+    mobileViewport.addEventListener('change', updatePreload);
+    return () => mobileViewport.removeEventListener('change', updatePreload);
+  }, []);
+
+  useEffect(() => {
     const hero = heroRef.current;
     const video = videoRef.current;
     if (!hero || !video) return;
