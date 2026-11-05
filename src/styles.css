@@ -294,6 +294,240 @@ body { background: var(--paper); color: #171412; }
   .gymx-marquee-track { animation: none; }
 }
 
+/* Performance Club Editorial: one restrained brand system across the public page. */
+:root {
+  --ink: #070809;
+  --paper: #101214;
+  --muted: #A7A9A8;
+  --line: rgba(245, 243, 239, .14);
+  --acid: #DE1702;
+  --silver: #A7A9A8;
+  --color-surface: #101214;
+  --color-ink: #070809;
+  --color-text: #F5F3EF;
+  --color-muted: #A7A9A8;
+  --color-accent: #DE1702;
+  --color-paper: #F5F3EF;
+  color-scheme: dark;
+}
+
+html, body { background: var(--color-ink); color: var(--color-text); }
+body, button, input, select { font-family: 'Vazirmatn', 'Noto Sans Arabic', sans-serif; }
+body { font-size: 15px; line-height: 1.75; }
+::selection { color: #fff; background: var(--color-accent); }
+:focus-visible { outline: 2px solid #ff6658; outline-offset: 4px; }
+.site-shell { background: var(--color-ink); }
+.section-wrap { width: min(1240px, calc(100% - 88px)); }
+
+.nav {
+  min-height: 76px;
+  padding: 14px clamp(22px, 5vw, 72px);
+  background: rgba(7, 8, 9, .88);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+.brand { font-family: 'Vazirmatn', sans-serif; font-size: 17px; letter-spacing: 0; line-height: 1; }
+.brand small { color: var(--color-text); font-size: 10px; letter-spacing: 0; }
+.brand-mark { border-color: var(--color-accent); color: var(--color-text); }
+.desktop-links { gap: clamp(14px, 2vw, 28px); margin-inline: 24px; font-size: 12px; letter-spacing: 0; }
+.desktop-links a { color: rgba(245, 243, 239, .78); }
+.desktop-links a:hover, .desktop-links a:focus-visible, .nav-cta:hover { color: #ff7468; border-color: #ff7468; }
+.nav-actions { gap: clamp(10px, 1.5vw, 22px); }
+.nav-member-link { font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.nav-cta { min-height: 42px; padding: 9px 16px; border: 1px solid rgba(222, 23, 2, .7); color: var(--color-text); font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+
+.eagle-sticky { background: radial-gradient(ellipse at 68% 46%, #26120f 0%, #111214 34%, #070809 76%); }
+.hero-vignette { background: linear-gradient(90deg, rgba(7,8,9,.9) 0%, rgba(7,8,9,.5) 42%, rgba(7,8,9,.08) 78%), linear-gradient(0deg, rgba(7,8,9,.72) 0%, transparent 36%, rgba(7,8,9,.28) 100%); }
+.eagle-copy { width: min(600px, 52vw); }
+.eagle-copy h1 { font-family: 'Vazirmatn', sans-serif; font-weight: 900; line-height: 1.22; letter-spacing: 0; }
+.eagle-copy h1 em, h2 em { color: #ff5b4b; }
+.eyebrow { font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.eyebrow span { background: var(--color-accent); }
+.hero-sub { color: rgba(245,243,239,.78); font-size: 16px; }
+.button { min-height: 50px; padding: 13px 20px; font-family: 'Vazirmatn', sans-serif; font-size: 13px; letter-spacing: 0; }
+.button-primary { background: var(--color-accent); color: #fff; }
+.button-primary:hover { background: #b81405; }
+.button-ghost { border: 1px solid rgba(245,243,239,.34); padding-inline: 16px; }
+.flight-note { font-family: 'Vazirmatn', sans-serif; font-size: 11px; letter-spacing: 0; }
+.hero-meta, .hero-corner { font-family: 'Barlow Condensed', 'Vazirmatn', sans-serif; letter-spacing: .04em; }
+
+.reference-header { background: #070809; }
+.reference-header img { max-height: min(76vh, 820px); object-position: center; }
+.gymx-marquee { background: var(--color-accent); color: #fff; padding-block: 12px; }
+.gymx-marquee-track { gap: clamp(24px, 4vw, 56px); font-size: clamp(15px, 1.6vw, 21px); font-weight: 700; }
+.gymx-marquee-track b { color: rgba(255,255,255,.62); font-size: 16px; }
+
+.manifesto, .programs, .facilities, .testimonial { background: var(--color-surface); color: var(--color-text); }
+.manifesto { padding: clamp(88px, 11vw, 148px) 0 96px; }
+.manifesto h2, h2 { font-family: 'Vazirmatn', sans-serif; font-weight: 800; font-size: clamp(42px, 5.4vw, 76px); line-height: 1.22; letter-spacing: 0; }
+.manifesto-copy { max-width: 470px; }
+.manifesto-copy .lead { font-family: 'Vazirmatn', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; line-height: 1.7; text-transform: none; }
+.manifesto-copy > p:not(.lead), .section-heading > p, .facilities-head > p { color: var(--color-muted); font-size: 14px; line-height: 2; }
+.eyebrow.dark { color: #ff7468; }
+.stats { margin-top: 96px; padding-top: 24px; border-color: var(--line); }
+.stats div { gap: 12px; }
+.stats strong { color: var(--color-text); font: 700 48px/.95 'Barlow Condensed', sans-serif; }
+.stats span { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.text-link { color: var(--color-text); font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; border-color: rgba(245,243,239,.35); }
+.text-link:hover { color: #ff7468; border-color: var(--color-accent); }
+
+.programs { padding-block: clamp(88px, 10vw, 132px); }
+.section-heading { grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); margin-bottom: 54px; }
+.section-heading h2, .facilities-head h2 { max-width: 780px; }
+.section-heading::after, .facilities-head::after { background: var(--color-accent); }
+.program-grid { gap: 0; border: 1px solid var(--line); background: var(--line); }
+.program-card { min-height: 280px; grid-template-columns: 48px 1fr; gap: 18px; padding: clamp(24px, 3vw, 38px); background: #141719; }
+.program-card:hover { background: #1b1e20; }
+.program-number { color: #ff7468; font: 600 18px 'Barlow Condensed', sans-serif; }
+.card-tag { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 11px; letter-spacing: 0; }
+.program-card h3 { margin-bottom: 10px; font-family: 'Vazirmatn', sans-serif; font-size: 28px; font-weight: 700; }
+.program-card > div > p:not(.card-tag) { color: var(--color-muted); font-size: 13px; line-height: 1.9; }
+.round-arrow { border-color: rgba(245,243,239,.3); }
+.round-arrow:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+
+.dark-section { background: #0b0c0e; color: var(--color-text); }
+.coaches, .membership { padding-block: clamp(88px, 10vw, 132px); }
+.light .eyebrow { color: #ff7468; }
+.section-heading.light > p { color: var(--color-muted); }
+.coach-grid { gap: 14px; }
+.coach-photo { height: auto; aspect-ratio: 4 / 5; padding: 18px; background: #17191b; }
+.coach-photo::after { background: linear-gradient(0deg, rgba(7,8,9,.82), transparent 56%); }
+.coach-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 24%; transform: none; filter: saturate(.78); }
+.coach-card:hover .coach-photo > img { transform: scale(1.025); filter: saturate(.95); }
+.coach-photo > span { border-color: rgba(245,243,239,.75); color: #fff; font: 600 15px 'Barlow Condensed', sans-serif; }
+.coach-info { padding-top: 16px; }
+.coach-info h3 { font-family: 'Vazirmatn', sans-serif; font-size: 22px; font-weight: 700; }
+.coach-info p { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.coach-info small { color: #ff7468; font-family: 'Vazirmatn', sans-serif; font-size: 11px; letter-spacing: 0; }
+.coach-photo::before { display: none; }
+
+.facilities { padding-block: clamp(88px, 10vw, 132px); }
+.facility-gallery { min-height: 540px; gap: 10px; }
+.facility-tile { background: #181a1c; }
+.facility-tile img { width: 100%; height: 100%; min-height: 0; object-fit: cover; filter: saturate(.78) contrast(1.04); transition: transform 450ms ease, filter 450ms ease; }
+.facility-tile:hover img { transform: scale(1.025); filter: saturate(.95) contrast(1.04); }
+.facility-tile::after { content: ''; position: absolute; inset: 35% 0 0; pointer-events: none; background: linear-gradient(0deg, rgba(7,8,9,.82), transparent); }
+.tile-label { left: 20px; right: 20px; bottom: 17px; color: #fff; font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+
+.plan-grid { gap: 12px; }
+.plan-card { min-height: 390px; padding: clamp(24px, 3vw, 36px); border-color: var(--line); background: #111416; }
+.plan-card.featured { background: #24100e; color: var(--color-text); border-color: rgba(222,23,2,.75); transform: translateY(-8px); }
+.plan-card .card-tag, .plan-card.featured .card-tag { color: #ff7468; }
+.plan-card h3 { font-family: 'Barlow Condensed', 'Vazirmatn', sans-serif; font-size: 68px; }
+.plan-card h3 sup { font-family: 'Barlow Condensed', sans-serif; }
+.plan-card h3 small, .featured h3 small { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.plan-note, .featured .plan-note { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.plan-card ul, .featured ul { color: rgba(245,243,239,.8); font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.plan-card li svg { flex: 0 0 auto; color: #ff7468; }
+.featured .button-primary { background: var(--color-accent); color: #fff; }
+.button-outline { border-color: rgba(245,243,239,.36); color: var(--color-text); }
+.button-outline:hover { border-color: #ff7468; color: #ff7468; }
+.popular { background: var(--color-accent); color: #fff; font-family: 'Vazirmatn', sans-serif; font-size: 10px; letter-spacing: 0; }
+
+.testimonial { padding-block: clamp(88px, 11vw, 150px); }
+.quote-mark { color: #ff5b4b; font-family: 'Barlow Condensed', sans-serif; }
+.testimonial blockquote { max-width: 900px; font-family: 'Vazirmatn', sans-serif; font-size: clamp(26px, 4vw, 48px); font-weight: 700; line-height: 1.7; }
+.quote-person { direction: rtl; text-align: right; }
+.avatar { background: #26292b; color: var(--color-text); font-family: 'Vazirmatn', sans-serif; }
+.quote-person strong { font-family: 'Vazirmatn', sans-serif; font-size: 13px; }
+.quote-person small { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 11px; }
+
+.contact { padding-block: clamp(88px, 10vw, 132px); background: #121517; }
+.contact-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, .78fr); gap: clamp(44px, 8vw, 120px); }
+.contact-lead { color: var(--color-muted); font-size: 14px; line-height: 2; }
+.contact-details { border-color: var(--line); }
+.contact-details p { color: rgba(245,243,239,.82); font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.contact-details span { color: #ff7468; font-family: 'Vazirmatn', sans-serif; font-size: 11px; letter-spacing: 0; }
+.inquiry-form { padding: clamp(24px, 3vw, 36px); border: 1px solid var(--line); background: #171a1c; }
+.inquiry-form label { color: rgba(245,243,239,.85); font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; text-transform: none; }
+.inquiry-form input, .inquiry-form select { min-height: 48px; border-color: rgba(245,243,239,.24); font-family: 'Vazirmatn', sans-serif; }
+.inquiry-form input::placeholder { color: #8d9292; }
+.inquiry-form input:focus, .inquiry-form select:focus { border-color: #ff7468; }
+
+.footer { padding-top: 60px; background: #070809; }
+.footer-column h3 { color: var(--color-text); font-family: 'Vazirmatn', sans-serif; font-size: 15px; }
+.footer-column a, .footer-column p, .footer-column span, .footer-brand > p { color: var(--color-muted); font-family: 'Vazirmatn', sans-serif; font-size: 12px; }
+.footer-column a:hover, .footer-bottom a:hover { color: #ff7468; }
+.footer-bottom { border-color: var(--line); color: #8d9292; font-family: 'Vazirmatn', sans-serif; font-size: 11px; letter-spacing: 0; }
+.socials a { border-color: var(--line); color: var(--color-text); }
+.socials a:hover { border-color: #ff7468; color: #ff7468; }
+.footer-cta { color: #ff7468 !important; }
+
+.access-choice-backdrop { background: rgba(0,0,0,.76); backdrop-filter: blur(8px); }
+.access-choice { border: 1px solid var(--line); background: #111416; color: var(--color-text); }
+.access-choice h2 { font-size: 32px; }
+.access-choice-description, .access-choice-note { color: var(--color-muted); }
+.access-choice-options button { border-color: var(--line); background: #171a1c; color: var(--color-text); }
+.access-choice-options button:hover { border-color: rgba(222,23,2,.72); background: #201412; }
+.access-choice-icon { color: #ff7468; }
+
+@media (max-width: 1000px) {
+  .desktop-links { gap: 12px; margin-inline: 12px; font-size: 11px; }
+  .nav-actions { gap: 10px; }
+  .nav-member-link { font-size: 11px; }
+}
+@media (max-width: 850px) {
+  .section-wrap { width: min(100% - 42px, 680px); }
+  .nav { min-height: 68px; padding: 14px 21px; }
+  .nav-actions { display: none; }
+  .desktop-links { display: none; }
+  .mobile-links { background: rgba(13,15,16,.98); border-color: var(--line); font-family: 'Vazirmatn', sans-serif; font-size: 14px; letter-spacing: 0; }
+  .mobile-links a { padding-block: 4px; }
+  .mobile-links .nav-member-link, .mobile-links button:last-child { min-height: 46px; border-radius: 2px; font-family: 'Vazirmatn', sans-serif; font-size: 13px; }
+  .mobile-links button:last-child { border-color: rgba(222,23,2,.72); background: var(--color-accent); }
+  .eagle-copy { left: 21px; right: 21px; width: auto; }
+  .eagle-copy h1 { font-size: clamp(46px, 12vw, 76px); }
+  .hero-actions { flex-wrap: wrap; }
+  .manifesto, .programs, .coaches, .facilities, .membership, .testimonial, .contact { padding-block: 76px; }
+  .two-col, .section-heading, .facilities-head, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .section-heading { margin-bottom: 42px; }
+  .section-heading > p, .facilities-head > p { max-width: 520px; }
+  .stats { margin-top: 58px; }
+  .program-card { min-height: 0; }
+  .coach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 14px; }
+  .coach-photo { aspect-ratio: 4 / 5; }
+  .facility-gallery { min-height: 460px; }
+  .plan-grid { grid-template-columns: 1fr; gap: 12px; }
+  .plan-card, .plan-card.featured { min-height: 0; transform: none; }
+  .plan-card ul { margin-top: 24px; }
+  .contact-grid { gap: 38px; }
+  .contact-details { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .section-wrap { width: calc(100% - 36px); }
+  .eagle-copy { left: 18px; right: 18px; }
+  .eagle-copy h1 { font-size: clamp(42px, 12vw, 62px); }
+  .hero-sub { font-size: 14px; }
+  .hero-actions { gap: 8px; }
+  .button { min-height: 46px; padding: 11px 14px; gap: 12px; font-size: 12px; }
+  .hero-meta { right: 18px; bottom: 18px; font-size: 10px; }
+  .flight-note { bottom: 20px; font-size: 10px; }
+  .manifesto, .programs, .coaches, .facilities, .membership, .testimonial, .contact { padding-block: 64px; }
+  .manifesto h2, h2 { font-size: clamp(38px, 10vw, 52px); }
+  .stats { gap: 22px 10px; }
+  .stats strong { font-size: 40px; }
+  .program-card { grid-template-columns: 34px 1fr; gap: 10px; padding: 22px 18px; }
+  .program-card h3 { font-size: 24px; }
+  .coach-grid { grid-template-columns: 1fr; gap: 28px; }
+  .coach-photo { aspect-ratio: 5 / 4; }
+  .facility-gallery { min-height: 540px; grid-template-columns: 1fr 1fr; grid-template-rows: 1.2fr .8fr; gap: 8px; }
+  .tile-large { grid-column: 1 / -1; grid-row: auto; }
+  .tile-tall, .tile-small { min-height: 180px; }
+  .tile-label { left: 12px; right: 12px; bottom: 12px; font-size: 11px; }
+  .plan-card { padding: 24px 20px; }
+  .plan-card h3 { font-size: 58px; }
+  .contact-details { grid-template-columns: 1fr; gap: 14px; }
+  .footer-main { gap: 34px; }
+  .footer-bottom { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gymx-marquee-track { animation: none !important; }
+  .scroll-reveal, .scroll-reveal-item { opacity: 1; transform: none; transition: none; will-change: auto; }
+  .section-heading::after, .facilities-head::after { transform: scaleX(1); transition: none; }
+  .reference-header img, .facility-tile img, .coach-photo > img { transition: none; }
+}
+
 
 /* Shahin's visual system: iron-black surfaces, warm white type and training orange. */
 :root {
@@ -693,6 +927,152 @@ body { font-family: 'Noto Sans Arabic', 'Manrope', sans-serif; }
     box-shadow: none;
     background: transparent;
   }
+}
+
+/* Final brand layer: takes precedence over legacy visual experiments above. */
+:root {
+  --ink: #070809;
+  --paper: #101214;
+  --muted: #A7A9A8;
+  --line: rgba(245,243,239,.14);
+  --acid: #DE1702;
+  --silver: #A7A9A8;
+  --color-surface: #101214;
+  --color-ink: #070809;
+  --color-text: #F5F3EF;
+  --color-muted: #A7A9A8;
+  --color-accent: #DE1702;
+}
+html, body { background: #070809; color: #F5F3EF; }
+body, button, input, select { font-family: 'Vazirmatn', 'Noto Sans Arabic', sans-serif; }
+body { font-size: 15px; line-height: 1.75; }
+:focus-visible { outline: 2px solid #ff7468; outline-offset: 4px; }
+.brand, .brand small { font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.brand small { color: #A7A9A8; }
+.brand-mark { border-color: #DE1702; color: #F5F3EF; }
+.nav { background: rgba(7,8,9,.92); border-color: rgba(245,243,239,.14); backdrop-filter: blur(14px); }
+.desktop-links { font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.desktop-links a { color: rgba(245,243,239,.8); }
+.desktop-links a:hover, .desktop-links a:focus-visible, .nav-member-link:hover { color: #ff7468; border-color: #DE1702; }
+.nav-member-link, .nav-cta { font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.nav-cta, .nav-cta:hover { min-height: 42px; border: 1px solid rgba(222,23,2,.75); border-radius: 2px; background: transparent; color: #F5F3EF; }
+.nav-cta:hover { background: rgba(222,23,2,.14); color: #ff7468; }
+.eagle-copy h1, h2, h3, blockquote { font-family: 'Vazirmatn', 'Noto Sans Arabic', sans-serif; letter-spacing: 0; }
+.eagle-copy h1 em, h2 em { color: #ff7468; }
+.eyebrow, .eyebrow.dark, .light .eyebrow { font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.eyebrow.dark, .light .eyebrow { color: #ff7468; }
+.eyebrow span, .scroll-line i { background: #DE1702; }
+.pulse-dot { background: #DE1702; box-shadow: 0 0 0 5px rgba(222,23,2,.16); }
+.button { min-height: 48px; border-radius: 2px; font-family: 'Vazirmatn', sans-serif; font-size: 13px; letter-spacing: 0; }
+.button-primary, .button-primary:hover { background: #DE1702; color: #fff; }
+.button-primary:hover { background: #b81405; }
+.button-ghost { border: 1px solid rgba(245,243,239,.32); }
+.gymx-marquee { background: #DE1702; color: #fff; }
+.gymx-marquee-track { font-family: 'Vazirmatn', sans-serif; font-weight: 700; }
+.gymx-marquee-track b { color: rgba(255,255,255,.62); }
+.manifesto, .programs, .facilities, .testimonial { background: #101214; color: #F5F3EF; }
+.manifesto h2, h2 { color: #F5F3EF; font-size: clamp(40px, 5.4vw, 72px); font-weight: 800; line-height: 1.35; }
+.manifesto-copy .lead, .lead { color: #F5F3EF; font-family: 'Vazirmatn', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; line-height: 1.8; text-transform: none; }
+.manifesto-copy > p:not(.lead), .section-heading > p, .facilities-head > p { color: #A7A9A8; font-size: 14px; line-height: 2; }
+.stats { border-color: rgba(245,243,239,.14); }
+.stats strong { color: #F5F3EF; font-family: 'Barlow Condensed', 'Vazirmatn', sans-serif; }
+.stats span, .program-number, .card-tag { color: #A7A9A8; font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.text-link { color: #F5F3EF; border-color: rgba(245,243,239,.3); font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.text-link:hover { color: #ff7468; border-color: #DE1702; }
+.program-grid { border-color: rgba(245,243,239,.14); background: rgba(245,243,239,.14); }
+.program-card, .program-card:hover { background: #141719; }
+.program-card:hover { box-shadow: inset 3px 0 #DE1702; }
+.program-card h3, .coach-info h3 { color: #F5F3EF; font-family: 'Vazirmatn', sans-serif; }
+.program-card > div > p:not(.card-tag), .coach-info p { color: #A7A9A8; }
+.round-arrow:hover { background: #DE1702; border-color: #DE1702; color: #fff; }
+.dark-section { background: #0b0c0e; color: #F5F3EF; }
+.coach-photo::before { display: none; }
+.coach-photo::after { background: linear-gradient(0deg, rgba(7,8,9,.62), transparent 62%); }
+.coach-photo > img { filter: saturate(.82) brightness(.82); }
+.coach-card:hover .coach-photo > img { filter: saturate(.96) brightness(.9); }
+.coach-photo > span, .coach-info small { color: #ff7468; border-color: rgba(245,243,239,.72); font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.facility-tile { border-color: rgba(245,243,239,.14); }
+.facility-tile::after { z-index: 0; background: linear-gradient(0deg, rgba(7,8,9,.78), transparent 62%); }
+.facility-tile > img { z-index: -1; filter: saturate(.82) brightness(.82); }
+.facility-tile:hover > img { filter: saturate(.96) brightness(.9); }
+.tile-label { z-index: 1; right: 20px; left: auto; color: #fff; font-family: 'Vazirmatn', sans-serif; font-size: 12px; letter-spacing: 0; }
+.membership { background: #0b0c0e; }
+.plan-card { border-color: rgba(245,243,239,.15); background: #111416; }
+.plan-card.featured { border-color: rgba(222,23,2,.75); background: #24100e; color: #F5F3EF; }
+.plan-card .card-tag, .plan-card.featured .card-tag { color: #ff7468; }
+.plan-card h3 { color: #F5F3EF; font-family: 'Barlow Condensed', 'Vazirmatn', sans-serif; }
+.plan-card h3 small, .plan-note, .plan-card ul, .featured h3 small, .featured .plan-note, .featured ul { color: rgba(245,243,239,.76); }
+.plan-note, .plan-card ul, .featured .plan-note, .featured ul { font-size: 13px; line-height: 1.8; }
+.popular { background: #DE1702; color: #fff; font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.featured .button-primary { background: #DE1702; color: #fff; }
+.button-outline { border-color: rgba(245,243,239,.36); color: #F5F3EF; }
+.button-outline:hover { border-color: #ff7468; color: #ff7468; }
+.quote-mark { color: #ff7468; }
+.quote-person { direction: rtl; text-align: right; }
+.quote-person strong, .quote-person small { color: #A7A9A8; font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.avatar { background: #242729; color: #F5F3EF; }
+.contact { background: #121517; }
+.contact-details { border-color: rgba(245,243,239,.14); }
+.contact-details p { color: rgba(245,243,239,.82); font-family: 'Vazirmatn', sans-serif; }
+.contact-details span { color: #ff7468; font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.inquiry-form { border: 1px solid rgba(245,243,239,.14); background: #171a1c; }
+.inquiry-form label { color: rgba(245,243,239,.86); font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; text-transform: none; }
+.inquiry-form label { font-size: 13px; }
+.inquiry-form input, .inquiry-form select { border-color: rgba(245,243,239,.25); font-family: 'Vazirmatn', sans-serif; }
+.inquiry-form input:focus, .inquiry-form select:focus { border-color: #ff7468; }
+.footer { background: #070809; }
+.footer-column h3, .footer-column a, .footer-column p, .footer-column span, .footer-brand > p, .footer-bottom { font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+.footer-column h3 { color: #F5F3EF; }
+.footer-column a, .footer-column p, .footer-column span, .footer-brand > p { color: #A7A9A8; }
+.footer-column a, .footer-column p, .footer-column span, .footer-brand > p { font-size: 13px; line-height: 1.9; }
+.footer-column > a:not(.footer-cta):hover, .footer-bottom a:hover { color: #ff7468; }
+.footer-cta { border-color: rgba(222,23,2,.65); color: #ff7468; }
+.footer-cta:hover { background: #DE1702; color: #fff; }
+.socials a { border-color: rgba(245,243,239,.18); color: #F5F3EF; }
+.socials a:hover { border-color: #DE1702; background: #DE1702; color: #fff; }
+.access-choice { border-color: rgba(245,243,239,.16); background: #111416; color: #F5F3EF; }
+.access-choice-options button { border-color: rgba(245,243,239,.16); background: #171a1c; color: #F5F3EF; }
+.access-choice-options button:hover { border-color: rgba(222,23,2,.72); background: #201412; }
+.access-choice-icon { color: #ff7468; }
+.scroll-reveal, .scroll-reveal-item { transition-duration: 500ms; }
+@media (max-width: 850px) {
+  .nav { min-height: 68px; }
+  .nav-actions { display: none; }
+  .menu-toggle { display: grid; flex: 0 0 44px; width: 44px; height: 44px; }
+  .mobile-links { border-color: rgba(245,243,239,.16); background: rgba(13,15,16,.98); font-family: 'Vazirmatn', sans-serif; letter-spacing: 0; }
+  .mobile-links .nav-member-link { color: #F5F3EF; }
+  .mobile-links button:last-child { border-color: #DE1702; background: #DE1702; }
+  .eagle-copy { bottom: max(108px, calc(env(safe-area-inset-bottom) + 92px)); }
+    .eagle-copy { bottom: max(108px, calc(env(safe-area-inset-bottom) + 92px)); }
+  .section-wrap { width: min(100% - 42px, 680px); }
+  .two-col, .section-heading, .facilities-head, .contact-grid { gap: 25px; }
+  .coach-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px 14px; }
+  .coach-photo { height: auto; aspect-ratio: 4 / 5; }
+  .plan-card, .plan-card.featured { transform: none; }
+  .footer-bottom { font-size: 11px; }
+}
+@media (min-width: 851px) {
+  .eagle-copy { bottom: clamp(150px, 18vh, 190px); }
+}
+@media (max-width: 520px) {
+  .section-wrap { width: calc(100% - 36px); }
+  .manifesto, .programs, .coaches, .facilities, .membership, .testimonial, .contact { padding-block: 64px; }
+  .manifesto h2, h2 { font-size: clamp(36px, 9vw, 48px); }
+  .program-card { grid-template-columns: 34px 1fr; gap: 10px; padding: 22px 18px; }
+  .coach-grid { grid-template-columns: 1fr; }
+  .coach-photo { aspect-ratio: 5 / 4; }
+  .facility-gallery { min-height: 520px; grid-template-columns: 1fr 1fr; grid-template-rows: 1.2fr .8fr; gap: 8px; }
+  .tile-large { grid-column: 1 / -1; grid-row: auto; }
+  .tile-tall, .tile-small { min-height: 180px; }
+  .contact-details { grid-template-columns: 1fr; }
+  .eagle-copy { bottom: max(124px, calc(env(safe-area-inset-bottom) + 108px)); }
+  .footer-column a, .footer-column p, .footer-column span, .footer-brand > p { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gymx-marquee-track { animation: none !important; }
+  .scroll-reveal, .scroll-reveal-item { opacity: 1; transform: none; transition: none; will-change: auto; }
+  .section-heading::after, .facilities-head::after { transform: scaleX(1); transition: none; }
+  .reference-header img, .facility-tile > img, .coach-photo > img { transition: none; }
 }
 
 @media (max-width: 850px) and (orientation: portrait) {
