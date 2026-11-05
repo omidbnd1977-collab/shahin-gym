@@ -357,6 +357,52 @@
   .td-shortcut-grid { gap: 5px; }
   .td-shortcut-grid button { padding-inline: 7px; }
 }
+@media (max-width: 760px) {
+  .trainer-app { width: 100%; max-width: 100vw; overflow-x: clip; padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  .td-sidebar { height: calc(60px + env(safe-area-inset-bottom)); padding: 3px 4px env(safe-area-inset-bottom); }
+  .td-side-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .td-side-nav button { min-height: 52px; gap: 3px; padding: 5px 1px; font-size: 10px; line-height: 1.35; white-space: normal; }
+  .td-side-nav button svg { width: 19px; height: 19px; }
+  .td-main-shell, .td-content, .td-panel, .td-overview-grid > *, .td-members-layout > *, .td-training-layout > *, .td-nutrition-columns > * { min-width: 0; }
+  .td-topbar { min-height: 60px; padding-inline: 12px; }
+  .td-breadcrumb { gap: 6px; min-width: 0; font-size: 10px; }
+  .td-breadcrumb strong { overflow: hidden; max-width: 34vw; text-overflow: ellipsis; white-space: nowrap; }
+  .td-top-actions { gap: 7px; }
+  .td-mobile-exit { min-height: 40px; padding: 7px 10px; font-size: 11px; }
+  .td-icon-button { width: 40px; height: 40px; }
+  .td-content { padding-inline: 12px; }
+  .td-page-heading { flex-wrap: wrap; }
+  .td-page-heading > .td-primary-button { min-height: 44px; padding-inline: 12px; font-size: 11px; }
+  .td-panel-heading { flex-wrap: wrap; }
+  .td-table-wrap { max-width: 100%; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .td-table { min-width: 560px; }
+  .td-table th, .td-table td { font-size: 11px; }
+  .td-table td { padding-block: 11px; }
+  .td-primary-button, .td-secondary-button, .td-detail-actions button, .td-segmented button { min-height: 44px; font-size: 11px; }
+  .td-field-label { font-size: 12px; }
+  .td-field-label input, .td-field-label select, .td-search { min-height: 46px; font-size: 16px; }
+  .td-assignment-fields, .td-food-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .td-assignment-fields .td-exercise-combobox, .td-assignment-fields .td-primary-button, .td-food-form .td-primary-button { grid-column: 1 / -1; }
+  .td-assignment-fields input, .td-assignment-fields select, .td-food-form input, .td-food-form select { min-width: 0; }
+  .td-set-preview input, .td-member-set-list input, .td-exercise-table td input { min-height: 42px; font-size: 14px; }
+  .td-modal-backdrop { align-items: end; padding: 0; }
+  .td-modal { width: 100%; max-width: none; max-height: min(90dvh, 760px); padding: 20px 16px calc(18px + env(safe-area-inset-bottom)); border-radius: 12px 12px 0 0; }
+  .td-modal-heading h2 { font-size: 19px; }
+  .td-modal-actions button { min-height: 46px; }
+  .td-toast { left: 12px; right: 12px; bottom: calc(72px + env(safe-area-inset-bottom)); max-width: none; font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .td-content { padding-inline: 10px; }
+  .td-topbar { padding-inline: 8px; }
+  .td-breadcrumb { font-size: 9px; }
+  .td-trainer { gap: 6px; padding-right: 7px; }
+  .td-trainer small { display: none; }
+  .td-trainer b { font-size: 9px; }
+  .td-page-heading h1 { font-size: 18px; }
+  .td-stat-card { padding-inline: 8px; }
+  .td-stat-card small { font-size: 9px; }
+  .td-shortcut-grid button { min-height: 90px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .trainer-app *, .trainer-app *::before, .trainer-app *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
