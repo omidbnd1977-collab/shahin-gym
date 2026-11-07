@@ -28,7 +28,7 @@ const programs = [
 const coaches = [
   { initials: 'AR', name: 'آرش رحیمی', role: 'سرمربی · ۱۲ سال تجربه', focus: 'قدرت و آمادگی جسمانی', image: 'https://images.pexels.com/photos/5878697/pexels-photo-5878697.jpeg?auto=compress&cs=tinysrgb&w=1000' },
   { initials: 'SN', name: 'سارا نوری', role: 'مربی عملکرد · ۸ سال تجربه', focus: 'تمرین بانوان و چربی‌سوزی', image: 'https://images.pexels.com/photos/12890893/pexels-photo-12890893.jpeg?auto=compress&cs=tinysrgb&w=1000' },
-  { initials: 'KM', name: 'کیان مهر', role: 'مربی بدنسازی · ۱۰ سال تجربه', focus: 'عضله‌سازی و آمادگی مسابقات', image: 'https://images.pexels.com/photos/18187615/pexels-photo-18187615.jpeg?auto=compress&cs=tinysrgb&w=1000' },
+  { initials: 'KM', name: 'کیان مهر', role: 'مربی بدنسازی · ۱۰ سال تجربه', focus: 'عضله‌سازی و آمادگی مسابقات', image: 'https://images.pexels.com/photos/4854256/pexels-photo-4854256.jpeg?auto=compress&cs=tinysrgb&w=1000' },
 ];
 
 const plans = [
