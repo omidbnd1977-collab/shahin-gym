@@ -80,7 +80,7 @@ function App() {
     if (!hero || !video) return;
 
     let raf = 0;
-    let targetTime = 0;
+    let hasStarted = false;
 
     const sync = () => {
       raf = 0;
@@ -88,22 +88,19 @@ function App() {
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
 
-      if (Number.isFinite(video.duration) && video.duration > 0) {
-        // Spread the flight over more of the scroll journey for a slower, calmer reveal.
-        const flightProgress = Math.min(1, Math.max(0, (progress - 0.08) / 0.84));
-        targetTime = Math.min(video.duration - 0.04, Math.max(0, flightProgress * video.duration));
-
-        // Ease toward the scroll target in small decoded steps instead of jumping
-        // directly to a distant timestamp (which causes visible stutter on phones).
-        if (video.readyState >= 2 && !video.seeking) {
-          const delta = targetTime - video.currentTime;
-          if (Math.abs(delta) > 0.035) {
-            const step = Math.max(-0.10, Math.min(0.10, delta * 0.24));
-            video.currentTime = Math.max(0, Math.min(video.duration - 0.04, video.currentTime + step));
-          } else if (Math.abs(delta) > 0.006) {
-            video.currentTime = targetTime;
-          }
-        }
+      // Start real, continuously decoded playback after the visitor scrolls into
+      // the flight section. Avoid assigning currentTime on every scroll frame:
+      // repeated MP4 seeks are the source of the choppy, frame-by-frame effect.
+      if (progress >= 0.08 && !hasStarted && video.readyState >= 2) {
+        hasStarted = true;
+        video.playbackRate = 0.5;
+        video.play().catch(() => {
+          hasStarted = false;
+        });
+      } else if (progress < 0.08 && hasStarted) {
+        video.pause();
+        if (video.currentTime > 0.05) video.currentTime = 0;
+        hasStarted = false;
       }
 
       setShowFlightHint(progress < 0.08);
@@ -112,22 +109,18 @@ function App() {
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(sync);
     };
-    const onSeeked = () => schedule();
 
-    video.addEventListener('loadedmetadata', schedule);
     video.addEventListener('loadeddata', schedule);
-    video.addEventListener('seeked', onSeeked);
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     schedule();
 
     return () => {
-      video.removeEventListener('loadedmetadata', schedule);
       video.removeEventListener('loadeddata', schedule);
-      video.removeEventListener('seeked', onSeeked);
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
       if (raf) cancelAnimationFrame(raf);
+      video.pause();
     };
   }, []);
 
