@@ -81,36 +81,47 @@ function App() {
     if (!hero || !video) return;
 
     let raf = 0;
+    let seekInFlight = false;
+    let desiredTime = 0;
 
-    // The video is a visual timeline controlled by the visitor's scroll,
-    // not an independently playing clip. The sticky stage keeps the hero
-    // on screen until the final frame has been reached.
+    // Keep one decode/seek in flight. Repeatedly changing currentTime while
+    // the browser is decoding aborts frames and causes visible judder.
     video.pause();
+
+    const applyLatestSeek = () => {
+      if (seekInFlight || !Number.isFinite(video.duration) || video.duration <= 0 || video.readyState < 2) return;
+      const frameDuration = 1 / (video.getVideoPlaybackQuality?.().totalVideoFrames ? 24 : 24);
+      const target = Math.min(desiredTime, Math.max(0, video.duration - 0.001));
+      if (Math.abs(video.currentTime - target) < frameDuration * 0.65) return;
+      seekInFlight = true;
+      video.currentTime = target;
+    };
 
     const sync = () => {
       raf = 0;
       const startY = hero.getBoundingClientRect().top + window.scrollY;
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
-
-      if (Number.isFinite(video.duration) && video.duration > 0 && video.readyState >= 1) {
-        // Apply every meaningful scroll position, rather than allowing a
-        // 45ms dead-zone that visibly skips frames on slow or fine scrolling.
-        const targetTime = Math.min(progress * video.duration, Math.max(0, video.duration - 0.001));
-        if (Math.abs(video.currentTime - targetTime) > 0.001) {
-          video.currentTime = targetTime;
-        }
+      if (Number.isFinite(video.duration) && video.duration > 0) {
+        desiredTime = progress * video.duration;
+        applyLatestSeek();
       }
-
       setShowFlightHint(progress < 0.04);
     };
 
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(sync);
     };
+    const onSeeked = () => {
+      seekInFlight = false;
+      // If scrolling continued during decoding, jump directly to the newest
+      // requested position rather than replaying obsolete intermediate seeks.
+      if (Math.abs(video.currentTime - desiredTime) > 1 / 24) schedule();
+    };
 
     video.addEventListener('loadedmetadata', schedule);
     video.addEventListener('loadeddata', schedule);
+    video.addEventListener('seeked', onSeeked);
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     schedule();
@@ -118,6 +129,7 @@ function App() {
     return () => {
       video.removeEventListener('loadedmetadata', schedule);
       video.removeEventListener('loadeddata', schedule);
+      video.removeEventListener('seeked', onSeeked);
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
       if (raf) cancelAnimationFrame(raf);
