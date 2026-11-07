@@ -186,7 +186,7 @@ function App() {
             <p className="hero-sub">قدرت. انضباط.<br />تحول.</p>
             <div className="hero-actions"><button className="button button-primary" onClick={() => scrollTo('contact')}>عضویت در باشگاه <Icon name="arrow" size={18} /></button><button className="button button-ghost" onClick={() => scrollTo('programs')}><span className="play-icon"><Icon name="play" size={12} /></span> برنامه‌های ما</button></div>
           </div>
-          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}assets/shaheen-flight-20261107.mp4`} muted playsInline preload="metadata" /></div>
+          <div className="flight-layer" aria-hidden="true"><video ref={videoRef} className="flight-video" src={`${import.meta.env.BASE_URL}assets/2c2c7a27-589b-44ab-8e34-f417b4d747a5-853912ad-4f35-47a8-84e4-0d0553d1bf9e.mp4`} muted playsInline preload="metadata" /></div>
           <div className="perched-eagle" style={{ transform: `translate3d(${mouse.x * 7}px, ${mouse.y * 4}px, 0)` }} aria-hidden="true" />
           <div className="hero-meta"><span>برای ورود اسکرول کنید</span><span className="scroll-line"><i /></span><span>۰۱ / ۰۶</span></div>
           {showFlightHint && <div className="flight-note"><span className="pulse-dot" /> شاهین را بیدار کنید</div>}
