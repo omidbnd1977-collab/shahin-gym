@@ -1315,3 +1315,22 @@ body { font-size: 15px; line-height: 1.75; }
 }
 .coaches .coach-info small { color: #ff7468 !important; }
 @media (prefers-reduced-motion: reduce) { .coaches .coach-photo::before { transition: none !important; } }
+
+
+/* Hero scroll pacing: keep the sticky hero visible until its scroll timeline ends. */
+.eagle-stage {
+  height: 230vh;
+}
+@media (max-width: 850px) {
+  .eagle-stage {
+    height: 220vh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eagle-stage {
+    height: 100svh;
+  }
+  .flight-video {
+    display: none;
+  }
+}

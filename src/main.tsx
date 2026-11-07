@@ -80,7 +80,11 @@ function App() {
     if (!hero || !video) return;
 
     let raf = 0;
-    let hasStarted = false;
+
+    // The video is a visual timeline controlled by the visitor's scroll,
+    // not an independently playing clip. The sticky stage keeps the hero
+    // on screen until the final frame has been reached.
+    video.pause();
 
     const sync = () => {
       raf = 0;
@@ -88,34 +92,28 @@ function App() {
       const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
 
-      // Start real, continuously decoded playback after the visitor scrolls into
-      // the flight section. Avoid assigning currentTime on every scroll frame:
-      // repeated MP4 seeks are the source of the choppy, frame-by-frame effect.
-      if (progress >= 0.08 && !hasStarted && video.readyState >= 2) {
-        hasStarted = true;
-        video.playbackRate = 0.5;
-        video.play().catch(() => {
-          hasStarted = false;
-        });
-      } else if (progress < 0.08 && hasStarted) {
-        video.pause();
-        if (video.currentTime > 0.05) video.currentTime = 0;
-        hasStarted = false;
+      if (Number.isFinite(video.duration) && video.duration > 0 && video.readyState >= 1) {
+        const targetTime = progress * video.duration;
+        if (Math.abs(video.currentTime - targetTime) > 0.045) {
+          video.currentTime = targetTime;
+        }
       }
 
-      setShowFlightHint(progress < 0.08);
+      setShowFlightHint(progress < 0.04);
     };
 
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(sync);
     };
 
+    video.addEventListener('loadedmetadata', schedule);
     video.addEventListener('loadeddata', schedule);
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     schedule();
 
     return () => {
+      video.removeEventListener('loadedmetadata', schedule);
       video.removeEventListener('loadeddata', schedule);
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
