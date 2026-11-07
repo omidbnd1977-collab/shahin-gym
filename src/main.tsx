@@ -90,7 +90,7 @@ function App() {
 
     const applyLatestSeek = () => {
       if (seekInFlight || !Number.isFinite(video.duration) || video.duration <= 0 || video.readyState < 2) return;
-      const frameDuration = 1 / (video.getVideoPlaybackQuality?.().totalVideoFrames ? 24 : 24);
+      const frameDuration = 1 / 24;
       const target = Math.min(desiredTime, Math.max(0, video.duration - 0.001));
       if (Math.abs(video.currentTime - target) < frameDuration * 0.65) return;
       seekInFlight = true;
@@ -116,7 +116,7 @@ function App() {
       seekInFlight = false;
       // If scrolling continued during decoding, jump directly to the newest
       // requested position rather than replaying obsolete intermediate seeks.
-      if (Math.abs(video.currentTime - desiredTime) > 1 / 24) schedule();
+      if (Math.abs(video.currentTime - desiredTime) > 0.65 / 24) schedule();
     };
 
     video.addEventListener('loadedmetadata', schedule);
