@@ -26,9 +26,9 @@ const programs = [
 ];
 
 const coaches = [
-  { initials: 'AR', name: 'آرش رحیمی', role: 'سرمربی · ۱۲ سال تجربه', focus: 'قدرت و آمادگی جسمانی', image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=85' },
-  { initials: 'SN', name: 'سارا نوری', role: 'مربی عملکرد · ۸ سال تجربه', focus: 'تمرین بانوان و چربی‌سوزی', image: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1200&q=85' },
-  { initials: 'KM', name: 'کیان مهر', role: 'مربی بدنسازی · ۱۰ سال تجربه', focus: 'عضله‌سازی و آمادگی مسابقات', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=85' },
+  { initials: 'AR', name: 'آرش رحیمی', role: 'سرمربی · ۱۲ سال تجربه', focus: 'قدرت و آمادگی جسمانی', image: 'https://images.pexels.com/photos/17210046/pexels-photo-17210046.jpeg?cs=srgb&dl=pexels-dogu-tuncer-339534179-17210046.jpg&fm=jpg' },
+  { initials: 'SN', name: 'سارا نوری', role: 'مربی عملکرد · ۸ سال تجربه', focus: 'تمرین بانوان و چربی‌سوزی', image: 'https://images.pexels.com/photos/35649991/pexels-photo-35649991.jpeg?cs=srgb&dl=pexels-achi-murusidze-2064615248-35649991.jpg&fm=jpg' },
+  { initials: 'KM', name: 'کیان مهر', role: 'مربی بدنسازی · ۱۰ سال تجربه', focus: 'عضله‌سازی و آمادگی مسابقات', image: 'https://images.pexels.com/photos/29773579/pexels-photo-29773579.jpeg?cs=srgb&dl=pexels-foadshariyati-29773579.jpg&fm=jpg' },
 ];
 
 const plans = [
