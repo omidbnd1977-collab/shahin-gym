@@ -64,10 +64,11 @@ function App() {
     if (!video) return;
     const mobileViewport = window.matchMedia('(max-width: 850px)');
     const updatePreload = () => {
-      const preload = mobileViewport.matches ? 'auto' : 'metadata';
-      if (video.preload === preload) return;
-      video.preload = preload;
-      if (mobileViewport.matches) video.load();
+      // Scroll scrubbing needs the full media available on desktop and mobile.
+      if (video.preload !== 'auto') {
+        video.preload = 'auto';
+        video.load();
+      }
     };
     updatePreload();
     mobileViewport.addEventListener('change', updatePreload);
@@ -93,8 +94,10 @@ function App() {
       const progress = Math.min(1, Math.max(0, (window.scrollY - startY) / travel));
 
       if (Number.isFinite(video.duration) && video.duration > 0 && video.readyState >= 1) {
-        const targetTime = progress * video.duration;
-        if (Math.abs(video.currentTime - targetTime) > 0.045) {
+        // Apply every meaningful scroll position, rather than allowing a
+        // 45ms dead-zone that visibly skips frames on slow or fine scrolling.
+        const targetTime = Math.min(progress * video.duration, Math.max(0, video.duration - 0.001));
+        if (Math.abs(video.currentTime - targetTime) > 0.001) {
           video.currentTime = targetTime;
         }
       }
