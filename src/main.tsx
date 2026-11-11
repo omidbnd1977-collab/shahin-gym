@@ -66,9 +66,22 @@ function App() {
     if (!video) return;
     video.pause();
     video.currentTime = 0;
-    if (video.preload !== 'auto') {
+
+    // Let the page paint first; then prioritize the full hero video for scroll scrubbing.
+    let idleId = 0;
+    let timeoutId = 0;
+    const prioritizeVideo = () => {
       video.preload = 'auto';
+    };
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(prioritizeVideo, { timeout: 1600 });
+    } else {
+      timeoutId = window.setTimeout(prioritizeVideo, 1000);
     }
+    return () => {
+      if (idleId && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {
@@ -333,7 +346,7 @@ function App() {
                   src={HERO_VIDEO_SRC}
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   disableRemotePlayback
                 />
               </div>
@@ -368,8 +381,9 @@ function App() {
             alt="تمرین قدرتی بانوان و آقایان در باشگاه شاهین"
             width={752}
             height={600}
+            loading="lazy"
             decoding="async"
-            fetchPriority="high"
+            fetchPriority="low"
           />
         </div>
       </section>
